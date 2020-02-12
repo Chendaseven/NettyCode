@@ -1,0 +1,41 @@
+*.class
+
+# Package Files #
+*.war
+*.ear
+
+/target/
+.settings
+.project
+.classpath
+/log/
+
+src/main/webapp/style/images/pass.png
+src/main/webapp/style/images/loginuser1.png
+src/main/webapp/script/themes/icons/password.png
+src/main/webapp/style/images/signout.png
+src/main/webapp/style/images/login.jpg
+src/main/webapp/style/images/loginuser.png
+!src/main/webapp/download/ChromeSetup.exe
+!src/main/webapp/download/flash.exe
+config/telphone.xml
+src/main/webapp/style/css/commonDetail.css
+src/main/webapp/script/themes/default/images/star.png
+src/main/webapp/script/themes/metro/images/star.png
+
+lxx.xml
+src/main/webapp/style/css/init.css
+src/main/webapp/style/css/Copy of login.css
+
+# Mac System
+*.DS_Store*
+
+# Big dependency
+src/main/webapp/WEB-INF/lib/*
+.idea/compiler.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+SCChannel.iml
+.idea/*

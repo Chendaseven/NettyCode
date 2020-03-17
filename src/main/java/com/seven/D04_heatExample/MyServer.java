@@ -1,6 +1,5 @@
 package com.seven.D04_heatExample;
 
-import com.seven.D02_serverAndclient.MyServerInitializer;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;

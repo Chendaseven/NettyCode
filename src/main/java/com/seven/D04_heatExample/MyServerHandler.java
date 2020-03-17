@@ -25,6 +25,8 @@ public class MyServerHandler extends ChannelInboundHandlerAdapter {
                     evenType="读写空闲";
                     break;
             }
+            System.out.println(ctx.channel().remoteAddress() + "超时事件" + evenType);
+            ctx.channel().close();
         }
     }
 }

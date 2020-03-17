@@ -1,6 +1,5 @@
 package com.seven.D04_heatExample;
 
-import com.seven.D02_serverAndclient.MyServerHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
@@ -17,7 +16,7 @@ public class MyServerInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
-        pipeline.addLast(new IdleStateHandler(5,7,10, TimeUnit.SECONDS));
+        pipeline.addLast(new IdleStateHandler(3,5,7, TimeUnit.SECONDS));
         //加上自己的处理器
         pipeline.addLast(new MyServerHandler());
     }

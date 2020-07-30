@@ -39,3 +39,4 @@ src/main/webapp/WEB-INF/lib/*
 .idea/workspace.xml
 SCChannel.iml
 .idea/*
+nettyCode.iml

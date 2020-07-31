@@ -3,10 +3,10 @@
  * Copyright (c) 2010-2020 All Rights Reserved.
  */
 
-package com.seven.Protocol.Request;
+package com.seven.wechat.Protocol.Request;
 
-import com.seven.Protocol.Command;
-import com.seven.Protocol.Packet;
+import com.seven.wechat.Protocol.Command;
+import com.seven.wechat.Protocol.Packet;
 import lombok.Data;
 
 /**
@@ -19,7 +19,7 @@ import lombok.Data;
  */
 @Data
 public class LoginRequestPacket extends Packet {
-    private Integer userId;
+    private String userId;
     private String userName;
     private String passWord;
 

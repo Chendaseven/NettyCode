@@ -5,12 +5,13 @@
 
 package Protocol;
 
-import com.seven.Protocol.Example.PacketCode;
-import com.seven.Protocol.Packet;
-import com.seven.Protocol.Request.LoginRequestPacket;
-import com.seven.Protocol.Serialize.JSONSerializer;
-import com.seven.Protocol.Serialize.Serializer;
+import com.seven.wechat.Protocol.Example.PacketCode;
+import com.seven.wechat.Protocol.Packet;
+import com.seven.wechat.Protocol.Request.LoginRequestPacket;
+import com.seven.wechat.Protocol.Serialize.JSONSerializer;
+import com.seven.wechat.Protocol.Serialize.Serializer;
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufAllocator;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -29,14 +30,13 @@ public class ProtocolTest {
         LoginRequestPacket loginRequestPacket = new LoginRequestPacket();
 
         loginRequestPacket.setVersion(((byte) 1));
-        loginRequestPacket.setUserId(123);
+        loginRequestPacket.setUserId("123");
         loginRequestPacket.setUserName("zhangsan");
         loginRequestPacket.setPassWord("password");
 
-        PacketCode packetCode = new PacketCode();
-        ByteBuf byteBuf = packetCode.encode(loginRequestPacket);
+        ByteBuf byteBuf = PacketCode.getINSTANCE().encode((ByteBufAllocator) ByteBufAllocator.DEFAULT.ioBuffer(),loginRequestPacket);
 
-        Packet packet = packetCode.decode(byteBuf);
+        Packet packet = PacketCode.getINSTANCE().decode(byteBuf);
         Assert.assertArrayEquals(serializer.serialize(loginRequestPacket), serializer.serialize(packet));
     }
 

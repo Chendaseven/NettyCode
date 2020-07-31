@@ -3,9 +3,7 @@
  * Copyright (c) 2010-2020 All Rights Reserved.
  */
 
-package com.seven.Protocol;
-
-import io.netty.buffer.ByteBufAllocator;
+package com.seven.wechat.Protocol;
 
 /**
  * <p>

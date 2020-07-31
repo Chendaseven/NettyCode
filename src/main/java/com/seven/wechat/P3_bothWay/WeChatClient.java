@@ -5,6 +5,7 @@
 
 package com.seven.wechat.P3_bothWay;
 
+import com.seven.wechat.P5_cheat.client.ClientHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
@@ -41,6 +42,7 @@ public class WeChatClient {
                     protected void initChannel(SocketChannel socketChannel) throws Exception {
                         //逻辑处理器，负责向服务端写数据
                         socketChannel.pipeline().addLast(new FirstClientHandler());
+                        socketChannel.pipeline().addLast(new ClientHandler());
                     }
                 });
         //建立连接

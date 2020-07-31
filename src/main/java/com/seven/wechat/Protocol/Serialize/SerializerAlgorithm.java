@@ -3,7 +3,7 @@
  * Copyright (c) 2010-2020 All Rights Reserved.
  */
 
-package com.seven.Protocol.Serialize;
+package com.seven.wechat.Protocol.Serialize;
 
 /**
  * <p>

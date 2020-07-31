@@ -29,4 +29,10 @@ public class MyServerHandler extends ChannelInboundHandlerAdapter {
             ctx.channel().close();
         }
     }
+
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+
+        super.channelActive(ctx);
+    }
 }

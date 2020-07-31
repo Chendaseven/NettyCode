@@ -3,14 +3,15 @@
  * Copyright (c) 2010-2020 All Rights Reserved.
  */
 
-package com.seven.Protocol.Example;
+package com.seven.wechat.Protocol.Example;
 
-import com.seven.Protocol.Command;
-import com.seven.Protocol.Packet;
-import com.seven.Protocol.Request.LoginRequestPacket;
-import com.seven.Protocol.Serialize.JSONSerializer;
-import com.seven.Protocol.Serialize.Serializer;
-import com.seven.Protocol.Serialize.SerializerAlgorithm;
+import com.seven.wechat.Protocol.Command;
+import com.seven.wechat.Protocol.Packet;
+import com.seven.wechat.Protocol.Request.LoginRequestPacket;
+import com.seven.wechat.Protocol.Serialize.JSONSerializer;
+import com.seven.wechat.Protocol.Serialize.Serializer;
+import com.seven.wechat.Protocol.Serialize.SerializerAlgorithm;
+import com.seven.wechat.Protocol.response.LoginResponsePacket;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 
@@ -24,9 +25,25 @@ import io.netty.buffer.ByteBufAllocator;
 public class PacketCode {
     private static final int MAGIC_NUMBER = 0x12345678;
 
-    public ByteBuf encode(Packet packet){
+    //改为单例模式，
+    private volatile static PacketCode INSTANCE = null;
+    private PacketCode(){}
+
+    public static PacketCode getINSTANCE(){
+        if(INSTANCE == null){
+            synchronized (PacketCode.class){
+                if (INSTANCE == null) {
+                    INSTANCE = new PacketCode();
+                }
+            }
+        }
+        return INSTANCE;
+    }
+
+    public ByteBuf encode(ByteBufAllocator alloc,Packet packet){
+
         //创建ByteBuf对象
-        ByteBuf byteBuf = ByteBufAllocator.DEFAULT.ioBuffer();
+        ByteBuf byteBuf = alloc.DEFAULT.ioBuffer();
         //序列化java对象
         byte[] bytes = Serializer.DEFAULT.serialize(packet);
 
@@ -82,6 +99,8 @@ public class PacketCode {
         switch (command){
             case Command.LOGIN_REQUEST:
                 return LoginRequestPacket.class;
+            case Command.LOGIN_RESPONSE:
+                return LoginResponsePacket.class;
         }
         return Packet.class;
     }

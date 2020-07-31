@@ -5,6 +5,7 @@
 
 package com.seven.wechat.P3_bothWay;
 
+import com.seven.wechat.P5_cheat.server.ServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
@@ -42,6 +43,7 @@ public class WeChatServer {
                     @Override
                     protected void initChannel(NioSocketChannel nioSocketChannel) throws Exception {
                         nioSocketChannel.pipeline().addLast(new FirstServerHandler());
+                        nioSocketChannel.pipeline().addLast(new ServerHandler());
                     }
                 });
         serverBootstrap.bind(1000).addListener(new GenericFutureListener<Future<? super Void>>() {

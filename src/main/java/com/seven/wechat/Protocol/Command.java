@@ -3,7 +3,7 @@
  * Copyright (c) 2010-2020 All Rights Reserved.
  */
 
-package com.seven.Protocol;
+package com.seven.wechat.Protocol;
 
 /**
  * <p>
@@ -16,4 +16,6 @@ package com.seven.Protocol;
 public interface Command {
     //登录指令
     byte LOGIN_REQUEST = 1;
+    //登录返回指令
+    byte LOGIN_RESPONSE = 2;
 }
